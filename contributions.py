@@ -4,9 +4,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/contribution")
-def contribution():
-  url = 'https://github.com/Yunbin-Chang'
+@app.route("/contribution/<uname>")
+def contribution(uname):
+  url = 'https://github.com/' + uname
 
   html = urlopen(url)
   soup = BeautifulSoup(html, 'html.parser')
@@ -16,11 +16,10 @@ def contribution():
 
   json = "["
   for rect in rects:
-    json += "\n    {\n" + '        "date" : "' + rect.get('data-date') + '"' + " ,\n" + '        "count" : "' + rect.get('data-count') + '"' + "\n    },"
-
+    json += '\n    {\n        "date" : "' + rect.get('data-date') + '" ,\n        "count" : "' + rect.get('data-count') + '"\n    },'
+    
   json = json[:-1]
   json += "\n]"
-  print(json)
   return json
 
 if __name__ == "__main__":
