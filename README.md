@@ -24,9 +24,12 @@
   running as background service.
   
   * It works in only linux environment.
-  =>> nohup python3 ./contributions.py &.
   
-  It would be running with started as background and daemon-like
+  ```
+   nohup python3 ./contributions.py &.
+  ```
+  
+  It would be running with started as background and daemon-like.
   
 ## Route for API
 
@@ -65,7 +68,7 @@
     * JSON Example
   
     ```json
-    { "January" : "4", "Febuary" : "6", "March" : "0", "April" : "0", "May" : "0", "June" : "0", "July" : "0","August" : "0", "September" : "0","October" : "1", "November" : "0", "December" : "0" }
+    { "January" : "58", "Febuary" : "102", "March" : "16", "April" : "0", "May" : "0", "June" : "0", "July" : "2","August" : "6","September" : "0","October" : "8","November" : "17","December" : "10" }
     ```
     
     If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/Yunbin-Chang-Monthly.JSON)
