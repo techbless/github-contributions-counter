@@ -36,6 +36,7 @@
   
   It would be running with started as background and daemon-like.
   
+   
 ## Route for API
 
   * /contributions/daily/(uname)
@@ -57,18 +58,18 @@
       ]
      ```
      above json data ignored many contributing-date beacause the json is too big to write here.  
-     check out -> [Yunbin-Chang.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang.JSON)
+     check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang.JSON)
      
   * /contributions/weekly/(uname)
-
-    * this provides a json data contains how many contributed during last year and is counted by day of week
-    * JSON Example
   
-    ```json
-     { "Sunday" : "50", "Monday" : "25", "Tuesday" : "57", "Wednesday" : "33", "Thursday" : "14", "Friday" : "15", "Saturday" : "18" }
-    ```
+    * this provides a json data contains how many contributed during last year and is counted by day of week
+    * JSON Example
     
+    ```json
+    { "Sunday" : "50", "Monday" : "25", "Tuesday" : "57", "Wednesday" : "33", "Thursday" : "14", "Friday" : "15", "Saturday" : "18" }
+    ```
     If you want to find out more, check out -> [Yunbin-Chang-Weekly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Weekly.JSON)
+    
   
   * /contributions/monthly/(uname)
 
@@ -80,7 +81,8 @@
     ```
     
    If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Monthly.JSON)
-
+  
+  
 ## How does it works
 
   This API parse a contributions data from https://github.com/(some-user-name)
