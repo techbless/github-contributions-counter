@@ -91,10 +91,10 @@
 
 ![img/contribution-rect](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/img/contribution-rects.PNG)
 
-  the code for above color-filled rectangles is formatted as
+  each code for above color-filled rectangles is formatted as
 
   ```html
-    <rect class="day" width="10" height="10" x="?" y="?" fill="#ebedf0" data-count="<counting>" data-date="yyy-mm-dd"/>
+    <rect class="day" width="10" height="10" x="?" y="?" fill="#ebedf0" data-count="<counting>" data-date="yyyy-mm-dd"/>
   ```
 
   so the API parses from these parts and arrange and decorate with json and respond to request.
