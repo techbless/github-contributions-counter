@@ -39,48 +39,48 @@
    
 ## Route for API
 
-  * /contributions/daily/(uname)
+  #### `/contributions/daily/(uname)`
 
-    * this provides a json data contains how many contributed in a day with a contributing date.
+  * this provides a json data contains how many contributed in a day with a contributing date.
       ignoring a no contributing date.
-    * JSON Example
+  * JSON Example
   
-     ```json
-      [
-        {
-            "date" : "2017-02-27",
-            "count" : "2"
-        },
-        {
-            "date" : "2017-02-28",
-            "count" : "10"
-        }
-      ]
-     ```
-     above json data ignored many contributing-date beacause the json is too big to write here.  
-     check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang.JSON)
+   ```json
+    [
+      {
+          "date" : "2017-02-27",
+          "count" : "2"
+      },
+      {
+          "date" : "2017-02-28",
+          "count" : "10"
+      }
+    ]
+   ```
+   above json data ignored many contributing-date beacause the json is too big to write here.  
+   check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang.JSON)
      
-  * /contributions/weekly/(uname)
+  #### `/contributions/weekly/(uname)`
   
-    * this provides a json data contains how many contributed during last year and is counted by day of week
-    * JSON Example
+  * this provides a json data contains how many contributed during last year and is counted by day of week
+  * JSON Example
     
-    ```json
-    { "Sunday" : "50", "Monday" : "25", "Tuesday" : "57", "Wednesday" : "33", "Thursday" : "14", "Friday" : "15", "Saturday" : "18" }
-    ```
-    If you want to find out more, check out -> [Yunbin-Chang-Weekly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Weekly.JSON)
+  ```json
+  { "Sunday" : "50", "Monday" : "25", "Tuesday" : "57", "Wednesday" : "33", "Thursday" : "14", "Friday" : "15", "Saturday" : "18" }
+  ```
+  If you want to find out more, check out -> [Yunbin-Chang-Weekly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Weekly.JSON)
     
   
-  * /contributions/monthly/(uname)
+  #### `/contributions/monthly/(uname)`
 
-    * this provides a json data contains how many contributed during last year and is counted by month of year
-    * JSON Example
+  * this provides a json data contains how many contributed during last year and is counted by month of year
+  * JSON Example
   
-    ```json
-    { "January" : "58", "Febuary" : "102", "March" : "16", "April" : "0", "May" : "0", "June" : "0", "July" : "2","August" : "6","September" : "0","October" : "8","November" : "17","December" : "10" }
-    ```
+  ```json
+  { "January" : "58", "Febuary" : "102", "March" : "16", "April" : "0", "May" : "0", "June" : "0", "July" : "2","August" : "6","September" : "0","October" : "8","November" : "17","December" : "10" }
+  ```
     
-   If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Monthly.JSON)
+ If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Monthly.JSON)
   
   
 ## How does it works
