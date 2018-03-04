@@ -36,6 +36,10 @@
   
   It would be running with started as background and daemon-like.
   
+
+## Range of Data
+
+	about last 1 year from now when you make a request for data.
    
 ## Route for API
 
