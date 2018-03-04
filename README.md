@@ -5,14 +5,14 @@
 [![Travis](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/view/Precise/view/All%20Precise/job/precise-desktop-amd64_default.svg)]() [![apm](https://img.shields.io/apm/l/vim-mode.svg)]()
 
 
-## What you need befor running
+## What you need before starting
 
   * Flask
   * BeautifulSoup4
   * Python3
-  * Nginx (not yet)
-  * Gunicorn (not yet)
-  
+  * Nginx
+  * Gunicorn
+  	* If you can use nginx and gunicorn, use for concurrent-request-handling.
   
   
 ## How to run
@@ -58,7 +58,7 @@
     ]
    ```
    above json data ignored many contributing-date beacause the json is too big to write here.  
-   check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang.JSON)
+   check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Daily.JSON)
      
   #### `/contributions/weekly/(uname)`
   
