@@ -3,6 +3,16 @@ from urllib.request import urlopen
 import datetime
 
 
+# From Chris Yunbin Chang as developer of this API, saying that This API never guarantee any errorneous, 
+# mis-working, damaging server, anything which can ouccur while using this API.
+
+# If you want to know how this API works or how to use this API, visit my Github.(https://github.com/Yunbin-Chang/Github-Contributions-API)
+# DON'T FORGET TO PRESS STAR BUTTON. THANK YOU 3
+
+# MIT License
+# Copyright (c) 2018 Chris Yunbin Chang
+
+
 def getContributionsDaily(uname):
   rects = getContributionsElement(uname)
 
@@ -16,7 +26,9 @@ def getContributionsDaily(uname):
   return json
 
 def getContributionsWeekly(uname):
+
   rects = getContributionsElement(uname)
+
   sun = 0
   mon = 0 
   tue = 0
@@ -56,6 +68,9 @@ def getContributionsWeekly(uname):
             "\"Friday\" : \"%s\", "\
             "\"Saturday\" : \"%s\""\
           " }" % (str(sun), str(mon), str(tue), str(wed), str(thu), str(fri), str(sat))
+
+
+  print("timeToContribs", timeToGetContribs)
 
   return json
 
@@ -133,7 +148,3 @@ def getContributionsElement(uname):
 
   rects = soup.find_all("rect")
   return rects
-
-if __name__ == "__main__":
-  app.debug = False
-  app.run(host="0.0.0.0")
