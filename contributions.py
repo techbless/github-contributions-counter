@@ -1,17 +1,21 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from flask import Flask
 import datetime
 
-app = Flask(__name__)
 
-@app.route("/contributions/daily/<uname>")
-def contributions(uname):
-  
-  return getContributionsJSON(uname)
+def getContributionsDaily(uname):
+  rects = getContributionsElement(uname)
 
-@app.route("/contributions/weekly/<uname>")
-def contributionsWeekly(uname):
+  json = "["
+  for rect in rects:
+    if rect.get('data-count') != "0":
+      json += "\n    {\n        \"date\" : \"%s\",\n        \"count\" : \"%s\"\n    }," % (rect.get('data-date'), rect.get('data-count'))
+    
+  json = json[:-1]
+  json += "\n]"
+  return json
+
+def getContributionsWeekly(uname):
   rects = getContributionsElement(uname)
   sun = 0
   mon = 0 
@@ -55,8 +59,8 @@ def contributionsWeekly(uname):
 
   return json
 
-@app.route('/contributions/monthly/<uname>')
-def contributionsMonthly(uname):
+
+def getContributionsMonthly(uname):
   rects = getContributionsElement(uname)
 
   m_jan = 0
@@ -119,17 +123,7 @@ def contributionsMonthly(uname):
   return json
 
 
-def getContributionsJSON(uname):
-  rects = getContributionsElement(uname)
 
-  json = "["
-  for rect in rects:
-    if rect.get('data-count') != "0":
-      json += "\n    {\n        \"date\" : \"%s\",\n        \"count\" : \"%s\"\n    }," % (rect.get('data-date'), rect.get('data-count'))
-    
-  json = json[:-1]
-  json += "\n]"
-  return json
 
 def getContributionsElement(uname):
   url = 'https://github.com/' + uname
