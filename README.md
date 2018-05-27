@@ -34,8 +34,8 @@
 
   #### `getContributionsDaily("USER NAME HERE")`
 
-  * this provides a json data contains how many contributed in a day with a contributing date.
-      ignoring a no contributing date.
+  * this provides a json data contains how many contributed in a day with a contributed date.
+      ignoring a no contributed date.
   * JSON Example
   
    ```json
