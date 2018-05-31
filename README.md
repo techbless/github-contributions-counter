@@ -7,12 +7,9 @@
 
 ## What you need before starting
 
-  * Flask
   * BeautifulSoup4
   * Python3
-  * Nginx
-  * Gunicorn
-  	* If you can use nginx and gunicorn, use for concurrent-request-handling.
+  * Virtual Environment(recommended)
   
   
 ## How to run
@@ -20,33 +17,25 @@
   1. clone the repository into your API server.
   2. make a python vertual environment.
   3. get into the vertualenv
-  4. type python ./contributions.py for starting server
+  4. import contributions.py in the code in which you will use API.
+  5. use the function such as "getContributionsDaily("Yunbin-Chang")"
   
-  
-## Running like a Daemon
-
-  If you want to run the server like daemon. which would not be stopped although you closed the terminal,
-  running as background service.
-  
-  * It works in only linux environment.
-  
-  ```
-   nohup python3 ./contributions.py &.
-  ```
-  
-  It would be running with started as background and daemon-like.
+  * The availiable function list is below.
   
 
-## Range of Data
-
-	about last 1 year from now when you make a request for data.
+	
+## How to Import API
+  * Use Below Code
+   ```python
+    from contributions import *
+   ```
    
-## Route for API
+## Function for API
 
-  #### `/contributions/daily/(uname)`
+  #### `getContributionsDaily("USER NAME HERE")`
 
-  * this provides a json data contains how many contributed in a day with a contributing date.
-      ignoring a no contributing date.
+  * this provides a json data contains how many contributed in a day with a contributed date.
+      ignoring a no contributed date.
   * JSON Example
   
    ```json
@@ -64,7 +53,7 @@
    above json data ignored many contributing-date beacause the json is too big to write here.  
    check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Daily.JSON)
      
-  #### `/contributions/weekly/(uname)`
+  #### `getContributionsWeekly("USER NAME HERE")`
   
   * this provides a json data contains how many contributed during last year and is counted by day of week
   * JSON Example
@@ -75,7 +64,7 @@
   If you want to find out more, check out -> [Yunbin-Chang-Weekly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Weekly.JSON)
     
   
-  #### `/contributions/monthly/(uname)`
+  #### `getContributionsMonthly("Yunbin-Chang")`
 
   * this provides a json data contains how many contributed during last year and is counted by month of year
   * JSON Example
@@ -85,6 +74,12 @@
   ```
     
  If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Monthly.JSON)
+ 
+ 
+
+## Range of Data
+
+	about last 1 year from now when you make a request for data.
   
   
 ## How does it works
@@ -104,9 +99,20 @@
   so the API parses from these parts and arrange and decorate with json and respond to request.
 
 
+## Contributions
+
+  We welcome contributions, but some Rules:
+  
+   * please keep the master branch working.
+   * Generally, We prefer for you to add new features or fix bugs rather than refactoring, or deleting)
+
 ## How to Keep in Touch
 
 	hw@yunbin.kr
+	
+## Should Notice This
+
+	From Chris Yunbin Chang as developer of this API, saying that This API never guarantee any errorneous, mis-working, damaging server, anything which can ouccur while using this API.
 
 ## License
 

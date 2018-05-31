@@ -5,6 +5,6 @@ from contributions import *
 
 # This is only for identifying if API is working or Testing Something bizarre.
 
-print(getContributionsMonthly("Yunbin-Chang\n\n"))
-print(getContributionsWeekly("Yunbin-Chang\n\n"))
-print(getContributionsDaily("Yunbin-Chang\n\n"))
+print(getContributionsMonthly("Yunbin-Chang"))
+print(getContributionsWeekly("Yunbin-Chang"))
+print(getContributionsDaily("Yunbin-Chang"))
