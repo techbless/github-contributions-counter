@@ -70,7 +70,6 @@ def getContributionsWeekly(uname):
           " }" % (str(sun), str(mon), str(tue), str(wed), str(thu), str(fri), str(sat))
 
 
-  print("timeToContribs", timeToGetContribs)
 
   return json
 
