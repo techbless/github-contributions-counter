@@ -27,7 +27,13 @@
 ## How to Import API
   * Use Below Code
    ```python
-    from contributions import *
+    import contributions as ct
+   ```
+   
+## How to Call Function
+  * Use Below Code
+   ```python
+    print(ct.getContributionsDaily("USER NAME HERE"))
    ```
    
 ## Function for API
