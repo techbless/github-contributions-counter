@@ -15,20 +15,31 @@ import time
 # MIT License
 # Copyright (c) 2018 Chris Yunbin Chang
 
+monthDict = {
+  1: "January",
+  2: "Febuary",
+  3: "March",
+  4: "April",
+  5: "May",
+  6: "June",
+  7: "July",
+  8: "August",
+  9: "September",
+  10: "October",
+  11: "November",
+  12: "December"
+}
 
-"""def getContributionsDaily(uname):
-  start = time.time()
-  rects = getContributionsElement(uname)
+weekTable = {
+  0: "Sunday",
+  1: "Monday",
+  2: "Tuesday",
+  3: "Wednesday",
+  4: "Thursday",
+  5: "Friday",
+  6: "Saturday"
+}
 
-  json = "["
-  for rect in rects:
-    if rect.get('data-count') != "0":
-      json += "\n    {\n        \"date\" : \"%s\",\n        \"count\" : \"%s\"\n    }," % (rect.get('data-date'), rect.get('data-count'))
-    
-  json = json[:-1]
-  json += "\n]"
-  print(time.time() - start)
-  return json"""
 
 def getContributionsDaily(uname):
   
@@ -52,13 +63,7 @@ def getContributionsWeekly(uname):
 
   rects = getContributionsElement(uname)
 
-  sun = 0
-  mon = 0 
-  tue = 0
-  wed = 0
-  thu = 0
-  fri = 0
-  sat = 0
+  week = [0, 0, 0, 0, 0, 0, 0]
 
   for rect in rects:
     dt = rect.get('data-date')
@@ -68,100 +73,80 @@ def getContributionsWeekly(uname):
     dayOfWeek = ans.strftime("%A")
 
     if dayOfWeek == "Sunday":
-      sun += count
+      week[0] += count
     elif dayOfWeek == "Monday":
-      mon += count
+      week[1] += count
     elif dayOfWeek == "Tuesday":
-      tue += count
+      week[2] += count
     elif dayOfWeek == "Wednesday":
-      wed += count
+      week[3] += count
     elif dayOfWeek == "Thursday":
-      thu += count
+      week[4] += count
     elif dayOfWeek == "Friday":
-      fri += count
+      week[5] += count
     elif dayOfWeek == "Saturday":
-      sat += count
+      week[6] += count
     
-  json = "{ "\
-            "\"Sunday\" : \"%s\", "\
-            "\"Monday\" : \"%s\", "\
-            "\"Tuesday\" : \"%s\", "\
-            "\"Wednesday\" : \"%s\", "\
-            "\"Thursday\" : \"%s\", "\
-            "\"Friday\" : \"%s\", "\
-            "\"Saturday\" : \"%s\""\
-          " }" % (str(sun), str(mon), str(tue), str(wed), str(thu), str(fri), str(sat))
 
+  res = []
 
-
-  return json
+  d = 0
+  for day_count in week:
+    dic = {
+      "day_of_week": weekTable[d],
+      "count": day_count
+    }
+    res.append(dic)
+  
+  return json.dumps(res)
 
 
 def getContributionsMonthly(uname):
   rects = getContributionsElement(uname)
-
-  m_jan = 0
-  m_feb = 0
-  m_mar = 0
-  m_apr = 0
-  m_may = 0
-  m_jun = 0
-  m_jul = 0
-  m_aug = 0
-  m_sep = 0
-  m_oct = 0
-  m_nov = 0
-  m_dec = 0
+  monthOf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
   for rect in rects:
     dt = rect.get('data-date')
     count = int(rect.get('data-count'))
-    month = dt.split('-')[1]
-    if month == "01":
-      m_jan += count
-    elif month == "02":
-      m_feb += count
-    elif month == "03":
-      m_mar += count
-    elif month == "04":
-      m_apr += count
-    elif month == "05":
-      m_may += count
-    elif month == "06":
-      m_jun += count
-    elif month == "07":
-      m_jul += count
-    elif month == "08":
-      m_aug += count
-    elif month == "09":
-      m_sep += count
-    elif month == "10":
-      m_oct += count
-    elif month == "11":
-      m_nov += count
-    elif month == "12":
-      m_dec += count
+    month = int(dt.split('-')[1])
 
-  json = "{ "\
-            "\"January\" : \"%s\", "\
-            "\"Febuary\" : \"%s\", "\
-            "\"March\" : \"%s\", "\
-            "\"April\" : \"%s\", "\
-            "\"May\" : \"%s\", "\
-            "\"June\" : \"%s\", "\
-            "\"July\" : \"%s\","\
-            "\"August\" : \"%s\","\
-            "\"September\" : \"%s\","\
-            "\"October\" : \"%s\","\
-            "\"November\" : \"%s\","\
-            "\"December\" : \"%s\","\
-          " }" % (str(m_jan), str(m_feb), str(m_mar), str(m_apr), str(m_may), str(m_jun), str(m_jul), str(m_aug), str(m_sep), str(m_oct), str(m_nov), str(m_dec))
+    for n in range(1, 13):
+      if month == n:
+        monthOf[n] += count
 
-  return json
+  monthDict = {
+    1: "January",
+    2: "Febuary",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+  }
+
+  res = []
+
+  m = 0
+  for month in monthOf:
+    if m != 0:
+      dic = {
+        "month": monthDict[m],
+        "count": str(month)
+      }
+      res.append(dic)
+    m += 1
+
+  return json.dumps(res)
 
 def getContributionsRatio(uname):
   url = 'https://github.com/' + uname
-  html = urlopen(url)
+  #html = urlopen(url)
+  html = requests.get(url).text
   soup = BeautifulSoup(html, 'html.parser')
 
   ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
