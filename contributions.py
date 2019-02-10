@@ -136,6 +136,13 @@ def getContributionsMonthly(uname):
 
   return json
 
+def getContributionsRatio(uname):
+  url = 'https://github.com/' + uname
+  html = urlopen(url)
+  soup = BeautifulSoup(html, 'html.parser')
+
+  ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
+  return ov_graph.get('data-percentages') # already json
 
 
 

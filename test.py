@@ -8,3 +8,4 @@ from contributions import *
 print(getContributionsMonthly("Yunbin-Chang"))
 print(getContributionsWeekly("Yunbin-Chang"))
 print(getContributionsDaily("Yunbin-Chang"))
+print(getContributionsRatio("Yunbin-Chang"))
