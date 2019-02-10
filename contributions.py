@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
-from urllib.request import urlopen
+# from urllib.request import urlopen
+import requests
 import datetime
 import json
 import time
@@ -169,10 +170,12 @@ def getContributionsRatio(uname):
 
 # **Notice** [This function is real slow, must be improved]
 def getContributionsElement(uname):
-  
   url = 'https://github.com/' + uname
 
-  html = urlopen(url)
+  #html = urlopen(url)
+  html = requests.get(url).text
+  
   soup = BeautifulSoup(html, 'html.parser')
   rects = soup.find_all("rect")
+
   return rects
