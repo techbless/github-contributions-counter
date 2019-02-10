@@ -97,6 +97,7 @@ def getContributionsWeekly(uname):
       "count": day_count
     }
     res.append(dic)
+    d += 1
   
   return json.dumps(res)
 
@@ -147,7 +148,7 @@ def getContributionsRatio(uname):
   url = 'https://github.com/' + uname
   #html = urlopen(url)
   html = requests.get(url).text
-  soup = BeautifulSoup(html, 'html.parser')
+  soup = BeautifulSoup(html, 'lxml')
 
   ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
   return ov_graph.get('data-percentages') # already json
@@ -160,7 +161,7 @@ def getContributionsElement(uname):
   #html = urlopen(url)
   html = requests.get(url).text
   
-  soup = BeautifulSoup(html, 'html.parser')
+  soup = BeautifulSoup(html, 'lxml')
   rects = soup.find_all("rect")
 
   return rects
