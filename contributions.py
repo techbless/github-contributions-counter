@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import datetime
+import json
+import time
 
 
 # From Chris Yunbin Chang as developer of this API, saying that This API never guarantee any errorneous, 
@@ -13,7 +15,8 @@ import datetime
 # Copyright (c) 2018 Chris Yunbin Chang
 
 
-def getContributionsDaily(uname):
+"""def getContributionsDaily(uname):
+  start = time.time()
   rects = getContributionsElement(uname)
 
   json = "["
@@ -23,7 +26,26 @@ def getContributionsDaily(uname):
     
   json = json[:-1]
   json += "\n]"
-  return json
+  print(time.time() - start)
+  return json"""
+
+def getContributionsDaily(uname):
+  
+  res = []
+  rects = getContributionsElement(uname)
+  
+  for rect in rects:
+    if rect.get('data-count') != "0":
+      dic = {
+        "date": rect.get('data-date'),
+        "count": rect.get('data-count')
+      }
+      res.append(dic)
+
+  #print(type(json.dumps(res))) 
+  return json.dumps(res)
+
+
 
 def getContributionsWeekly(uname):
 
@@ -145,12 +167,12 @@ def getContributionsRatio(uname):
   return ov_graph.get('data-percentages') # already json
 
 
-
+# **Notice** [This function is real slow, must be improved]
 def getContributionsElement(uname):
+  
   url = 'https://github.com/' + uname
 
   html = urlopen(url)
   soup = BeautifulSoup(html, 'html.parser')
-
   rects = soup.find_all("rect")
   return rects
