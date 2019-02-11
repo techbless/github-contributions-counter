@@ -51,6 +51,9 @@ class Contribution():
     else:
       res_list = []
       rects = self.getContributionsElement(uname)
+
+      if rects == "404":
+        return "404"
       
       for rect in rects:
         if rect.get('data-count') != "0":
@@ -71,6 +74,9 @@ class Contribution():
       result = self.cache.getCache("week", uname)
     else:
       rects = self.getContributionsElement(uname)
+
+      if rects == "404":
+        return "404"
 
       week = [0, 0, 0, 0, 0, 0, 0]
 
@@ -118,6 +124,10 @@ class Contribution():
       result = self.cache.getCache("month", uname)
     else:
       rects = self.getContributionsElement(uname)
+
+      if rects == "404":
+        return "404"
+
       monthOf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
       for rect in rects:
@@ -161,19 +171,21 @@ class Contribution():
     return result
 
   def getContributionsRatio(self, uname):
-    if self.cache.checkCacheExistence("ratio", uname):
-      result = self.cache.getCache("ratio", uname)
-    else:
-      url = 'https://github.com/' + uname
-      #html = urlopen(url)
-      html = requests.get(url).text
-      soup = BeautifulSoup(html, 'lxml')
+    try:
+      if self.cache.checkCacheExistence("ratio", uname):
+        result = self.cache.getCache("ratio", uname)
+      else:
+        url = 'https://github.com/' + uname
+        #html = urlopen(url)
+        html = requests.get(url).text
+        soup = BeautifulSoup(html, 'lxml')
 
-      ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
-      result = ov_graph.get('data-percentages') # already json
-      self.cache.createCache("ratio", uname, result)
-    return result
-
+        ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
+        result = ov_graph.get('data-percentages') # already json
+        self.cache.createCache("ratio", uname, result)
+      return result
+    except:
+      return "404"
 
   # **Notice** [This function is real slow, must be improved]
   def getContributionsElement(self, uname):
@@ -184,5 +196,7 @@ class Contribution():
     
     soup = BeautifulSoup(html, 'lxml')
     rects = soup.find_all("rect")
-
-    return rects
+    if rects:
+      return rects
+    else:
+      return "404"
