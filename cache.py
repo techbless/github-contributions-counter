@@ -24,8 +24,7 @@ class CacheStorage():
         return self.cache[self.STORAGE[where]][uname]
 
     def checkCacheExistence(self, where, uname):
-        try:
-            self.cache[self.STORAGE[where]][uname]
-        except:
+        if uname in self.cache[self.STORAGE[where]]:
+            return True
+        else:
             return False
-        return True
