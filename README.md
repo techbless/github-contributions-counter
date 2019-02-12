@@ -10,7 +10,7 @@
   * BeautifulSoup4
   * Python3
   * Virtual Environment(recommended)
-  * library[requests, json]
+  * library[requests, json, lxml]
   
   
 ## How to run
