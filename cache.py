@@ -1,3 +1,6 @@
+import json
+import datetime
+
 class CacheStorage():
     
     STORAGE = {
@@ -7,9 +10,23 @@ class CacheStorage():
             "ratio": 3
         }
 
-    def __init__(self):
-        self.cache = [{}, {}, {}, {}]
+    
+    def __init__(self, *backup_file_name):
+        
 
+        if backup_file_name:
+            try:
+                with open(backup_file_name[0], mode='rt', encoding='utf-8') as f:
+                    backup_json = f.read()
+                    self.cache = json.loads(backup_json)
+                print("Storage mounted from ", backup_file_name[0])
+            except:
+                self.mountStorage()
+        else:
+            self.mountStorage()
+
+    def mountStorage(self):
+        self.cache = [{}, {}, {}, {}]
         print("Storage mounted!")
 
     def updateCache(self,where, uname, result):
@@ -28,3 +45,17 @@ class CacheStorage():
             return True
         else:
             return False
+
+    def backUpCacheStorage(self):
+        delete_targets = [':', ' ', '-']
+        now = datetime.datetime.now()
+
+        file_name = "storage_backup_%s" % (str(now))
+        for target in delete_targets:
+            file_name = file_name.replace(target, '')
+
+        file_name = file_name[:-7] + ".json"
+        with open(file_name, mode='wt', encoding='utf-8') as f:
+            f.write(json.dumps(self.cache))
+        
+        

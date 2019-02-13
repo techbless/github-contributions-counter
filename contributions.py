@@ -40,8 +40,14 @@ class Contribution():
     6: "Saturday"
   }
 
-  def __init__(self):
-    self.cache = CacheStorage()
+  def __init__(self, *backup_file_name):
+    if backup_file_name:
+      self.cache = CacheStorage(backup_file_name[0])
+    else:
+      self.cache = CacheStorage()
+
+  def __del__(self):
+    self.cache.backUpCacheStorage()
 
 
   def getContributionsDaily(self, uname):
@@ -53,7 +59,7 @@ class Contribution():
       rects = self.getContributionsElement(uname)
 
       if rects == "404":
-        return "404"
+        return "USER NOT FOUND"
       
       for rect in rects:
         if rect.get('data-count') != "0":
@@ -76,7 +82,7 @@ class Contribution():
       rects = self.getContributionsElement(uname)
 
       if rects == "404":
-        return "404"
+        return "USER NOT FOUND"
 
       week = [0, 0, 0, 0, 0, 0, 0]
 
@@ -126,7 +132,7 @@ class Contribution():
       rects = self.getContributionsElement(uname)
 
       if rects == "404":
-        return "404"
+        return "USER NOT FOUND"
 
       monthOf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -185,7 +191,7 @@ class Contribution():
         self.cache.createCache("ratio", uname, result)
       return result
     except:
-      return "404"
+      return "NOT PUBLIC DATA"
 
   # **Notice** [This function is real slow, must be improved]
   def getContributionsElement(self, uname):
