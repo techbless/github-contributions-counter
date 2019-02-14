@@ -5,7 +5,9 @@ from contributions import *
 
 # This is only for identifying if API is working or Testing Something bizarre.
 
-print(getContributionsMonthly("Yunbin-Chang"))
-print(getContributionsWeekly("Yunbin-Chang"))
-print(getContributionsDaily("Yunbin-Chang"))
-print(getContributionsRatio("Yunbin-Chang"))
+ct = Contribution()
+
+print(ct.getContributionsDaily("Yunbin-Chang"))
+print(ct.getContributionsWeekly("Yunbin-Chang"))
+print(ct.getContributionsMonthly("Yunbin-Chang"))
+print(ct.getContributionsRatio("Yunbin-Chang"))
