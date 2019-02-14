@@ -12,8 +12,6 @@ class CacheStorage():
 
     
     def __init__(self, *backup_file_name):
-        
-
         if backup_file_name:
             try:
                 with open(backup_file_name[0], mode='rt', encoding='utf-8') as f:
@@ -24,6 +22,9 @@ class CacheStorage():
                 self.mountStorage()
         else:
             self.mountStorage()
+
+    def __del__(self):
+        self.backUpCacheStorage()
 
     def mountStorage(self):
         self.cache = [{}, {}, {}, {}]
@@ -47,15 +48,19 @@ class CacheStorage():
             return False
 
     def backUpCacheStorage(self):
-        delete_targets = [':', ' ', '-']
-        now = datetime.datetime.now()
+        try:
+            delete_targets = [':', ' ', '-']
+            now = datetime.datetime.now()
 
-        file_name = "storage_backup_%s" % (str(now))
-        for target in delete_targets:
-            file_name = file_name.replace(target, '')
+            file_name = "storage_backup_%s" % (str(now))
+            for target in delete_targets:
+                file_name = file_name.replace(target, '')
 
-        file_name = file_name[:-7] + ".json"
-        with open(file_name, mode='wt', encoding='utf-8') as f:
-            f.write(json.dumps(self.cache))
+            file_name = file_name[:-7] + ".json"
+            with open(file_name, mode='wt', encoding='utf-8') as f:
+                f.write(json.dumps(self.cache))
+            print("Your cache storage is safely backuped!")
+        except:
+            print("Fail to backup your cache storage.")
         
         

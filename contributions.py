@@ -46,8 +46,8 @@ class Contribution():
     else:
       self.cache = CacheStorage()
 
-  def __del__(self):
-    self.cache.backUpCacheStorage()
+  def close(self):
+    del self.cache
 
 
   def getContributionsDaily(self, uname):
