@@ -187,7 +187,7 @@ class Contribution():
         soup = BeautifulSoup(html, 'lxml')
 
         ov_graph = soup.find("div", {'class': 'js-activity-overview-graph-container'})
-        result = ov_graph.get('data-percentages') # already json
+        result = ov_graph.get('data-percentages').replace(' ', '_').lower()  # already json
         self.cache.createCache("ratio", uname, result)
       return result
     except:
