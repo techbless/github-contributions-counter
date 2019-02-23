@@ -12,7 +12,7 @@ class Week extends Component {
         const data = this.extractData()
         return (
             <BarChart
-                label={'weekly'}
+                label={'contributions'}
                 labels={labels} 
                 data={data}
             />

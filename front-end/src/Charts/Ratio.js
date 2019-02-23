@@ -20,16 +20,16 @@ class Ratio extends Component {
                 {
                     data: this.extractData(),
                     backgroundColor: [
-                        "#FF6384",
+                        "#cc88c4",
                         "#36A2EB",
                         "#FFCE56",
-                        "#f4d942"
+                        "#4f8e69"
                     ],
                     hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#f4d942"
+                        "#bbb3ef",
+                        "#89ebff",
+                        "#ffeb89",
+                        "#abef7f"
                     ]
                 }]
         };

@@ -19,7 +19,7 @@ class Month extends Component {
 
         return (
             <BarChart
-                label={'monthly'}
+                label={'contributions'}
                 labels={labels} 
                 data={data}
             />
