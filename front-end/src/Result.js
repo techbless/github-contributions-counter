@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Week from './Charts/Week';
 import Month from './Charts/Month';
 import Ratio from './Charts/Ratio';
+import Navigation from './Navigation';
+import { Spinner, Container, Row, Col } from 'reactstrap';
 
 class Result extends Component {
 
-    state = {
-        ratio_public: true
-    }
+    state = {}
 
     componentDidMount() {
         this.fetchDatasFromServer()
@@ -48,18 +48,27 @@ class Result extends Component {
         }
     }
 
-
     render() {
         return (
             <div>
+                <Navigation />
                 {
                     this.isLoaded() ? (
                         <div>
-                            <Week weeks={this.state.weeks} />
-                            <Month months={this.state.months} />
-                            <Ratio ratio={this.state.ratio} />
+                            <Container>
+                                <Row>
+                                    <Col md='6'><Week weeks={this.state.weeks} /></Col>
+                                    <Col md='6'><Ratio ratio={this.state.ratio} /></Col>
+                                </Row>
+                                <hr /><hr />
+                                <Row>
+                                    <Col md='12'><Month months={this.state.months} /></Col>
+                                </Row>
+                            </Container>
+
+                            
                         </div>
-                    ) : 'loading..'
+                    ) : <Spinner color="primary" />
                 }
             </div>
         )
