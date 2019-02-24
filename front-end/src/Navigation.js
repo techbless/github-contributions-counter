@@ -26,22 +26,30 @@ export default class Navigation extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  
+
   render() {
+
+    const navTextStyle = {
+      color: 'white'
+    };
+
     return (
       <div>
         <Navbar color="dark" light expand="md">
-          <NavbarBrand href="/">Contribytics</NavbarBrand>
+          <NavbarBrand style={navTextStyle} href="/">Contribytics</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Contribytics</NavLink>
+                <NavLink style={navTextStyle} href="/components/">Contribytics</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink style={navTextStyle} href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle style={navTextStyle} nav caret>
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
