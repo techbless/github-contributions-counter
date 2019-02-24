@@ -7,7 +7,9 @@ import { Spinner, Container, Row, Col } from 'reactstrap';
 
 class Result extends Component {
 
-    state = {}
+    state = {
+        isRatioPublic: true
+    }
 
     componentDidMount() {
         this.fetchDatasFromServer()
@@ -37,11 +39,17 @@ class Result extends Component {
         .then(json => this.setState({
             ratio : json
         }))
+        .catch(err => this.setState({
+            isRatioPublic: false
+        }))
+        
     }
 
     isLoaded() {
-        if(this.state.days && this.state.weeks && this.state.months && this.state.ratio) {
-            return true
+        if(this.state.days && this.state.weeks && this.state.months) {
+            if(this.state.isRatioPublic === false || this.state.ratio) {
+                return true
+            }
         }
         else {
             return false
@@ -58,7 +66,7 @@ class Result extends Component {
                             <Container>
                                 <Row>
                                     <Col md='6'><Week weeks={this.state.weeks} /></Col>
-                                    <Col md='6'><Ratio ratio={this.state.ratio} /></Col>
+                                    { this.state.isRatioPublic ? ( <Col md='6'><Ratio ratio={this.state.ratio} /></Col> ) : 'Please make sure that the data is public.' }
                                 </Row>
                                 <hr /><hr />
                                 <Row>
