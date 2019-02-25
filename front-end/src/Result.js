@@ -57,6 +57,19 @@ class Result extends Component {
     }
 
     render() {
+
+        const Spin = {
+            textAlign: "center",
+            display: "webkit-flex",
+            minHeight: "100vh",
+            display: "flex",
+            webkitJustifyContent: "center",
+            justifyContent: "center",
+            webkitAlignItems: "center",
+            alignItems: "center",
+            backgroundColor: "#e8eaed"
+        }
+
         return (
             <div>
                 <Navigation />
@@ -76,7 +89,7 @@ class Result extends Component {
 
                             
                         </div>
-                    ) : <Spinner color="primary" />
+                    ) : <div style={Spin}><Spinner color='warning' /></div>
                 }
             </div>
         )
