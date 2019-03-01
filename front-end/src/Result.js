@@ -66,26 +66,40 @@ class Result extends Component {
     }
 
     render() {
+
+        const Spin = {
+            textAlign: "center",
+            display: "webkit-flex",
+            minHeight: "100vh",
+            display: "flex",
+            webkitJustifyContent: "center",
+            justifyContent: "center",
+            webkitAlignItems: "center",
+            alignItems: "center",
+            backgroundColor: "#e8eaed"
+        }
+
         return (
             <div>
                 <Navigation />
                 {
                     this.isLoaded() || this.state.doesUserExist ? (
                         <div>
-                            <Container>
-                                <Row>
-                                    <Col md='6'><Week weeks={this.state.weeks} /></Col>
-                                    { this.state.isRatioPublic ? ( <Col md='6'><Ratio ratio={this.state.ratio} /></Col> ) : 'Please make sure that the data is public.' }
-                                </Row>
-                                <hr /><hr />
-                                <Row>
-                                    <Col md='12'><Month months={this.state.months} /></Col>
-                                </Row>
-                            </Container>
-
+                            {
+                                <Container>
+                                    <Row>
+                                        <Col md='6'><Week weeks={this.state.weeks} /></Col>
+                                        { this.state.isRatioPublic ? ( <Col md='6'><Ratio ratio={this.state.ratio} /></Col> ) : 'Please make sure that the data is public.' }
+                                    </Row>
+                                    <hr /><hr />
+                                    <Row>
+                                        <Col md='12'><Month months={this.state.months} /></Col>
+                                    </Row>
+                                </Container> 
+                            }
                             
                         </div>
-                    ) : this.state.doesUserExist === false ? 'UserNotFound' : <Spinner color="primary" />
+                    ) : this.state.doesUserExist === false ? 'UserNotFound' : <div style={Spin}><Spinner color='warning' /></div>
                 }
             </div>
         )
