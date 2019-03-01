@@ -21,17 +21,26 @@ class Result extends Component {
         .then(json => this.setState({
             weeks : json
         }))
+        .catch(err => this.setState({
+            doesUserExist: false
+        }))
 
         fetch("http://127.0.0.1:5000/contribution/month/" + this.props.match.params.uname)
         .then(response => response.json())
         .then(json => this.setState({
             months : json
         }))
+        .catch(err => this.setState({
+            doesUserExist: false
+        }))
 
         fetch("http://127.0.0.1:5000/contribution/day/" + this.props.match.params.uname)
         .then(response => response.json())
         .then(json => this.setState({
             days : json
+        }))
+        .catch(err => this.setState({
+            doesUserExist: false
         }))
 
         fetch("http://127.0.0.1:5000/contribution/ratio/" + this.props.match.params.uname)
@@ -57,24 +66,11 @@ class Result extends Component {
     }
 
     render() {
-
-        const Spin = {
-            textAlign: "center",
-            display: "webkit-flex",
-            minHeight: "100vh",
-            display: "flex",
-            webkitJustifyContent: "center",
-            justifyContent: "center",
-            webkitAlignItems: "center",
-            alignItems: "center",
-            backgroundColor: "#e8eaed"
-        }
-
         return (
             <div>
                 <Navigation />
                 {
-                    this.isLoaded() ? (
+                    this.isLoaded() || this.state.doesUserExist ? (
                         <div>
                             <Container>
                                 <Row>
@@ -89,7 +85,7 @@ class Result extends Component {
 
                             
                         </div>
-                    ) : <div style={Spin}><Spinner color='warning' /></div>
+                    ) : this.state.doesUserExist === false ? 'UserNotFound' : <Spinner color="primary" />
                 }
             </div>
         )
