@@ -99,7 +99,13 @@ class Result extends Component {
                             }
                             
                         </div>
-                    ) : this.state.doesUserExist === false ? 'UserNotFound' : <div style={Spin}><Spinner color='warning' /></div>
+                    ) : this.state.doesUserExist === false ? 
+                        <div style={Spin}>
+                            UserNotFound
+                        </div> : 
+                        <div style={Spin}>
+                            <Spinner color='warning' />
+                        </div>
                 }
             </div>
         )
