@@ -5,7 +5,7 @@
 [![Travis](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/view/Precise/view/All%20Precise/job/precise-desktop-amd64_default.svg)]() [![apm](https://img.shields.io/apm/l/vim-mode.svg)]()
 
 
-## What you need before starting
+## What you need before starting(_out-dated_)
 
   * BeautifulSoup4
   * Python3
@@ -37,7 +37,7 @@
     print(ct.getContributionsDaily("USER NAME HERE"))
    ```
    
-## Function for API
+## Function for API (This part is out-dated, will be updated soon)
 
   #### `getContributionsDaily("USER NAME HERE")`
 
