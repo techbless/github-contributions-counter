@@ -8,21 +8,9 @@
 ## What you need before starting(_out-dated_)
 
   * BeautifulSoup4
-  * Python3
+  * Python3  
+  * library[requests, json, lxml]   
   * Virtual Environment(recommended)
-  * library[requests, json, lxml]
-  
-  
-## How to run
-
-  1. clone the repository into your API server.
-  2. make a python vertual environment.
-  3. get into the vertualenv
-  4. import contributions.py in the code in which you will use API.
-  5. use the function such as "getContributionsDaily("Yunbin-Chang")"
-  
-  * The availiable function list is below.
-  
 
 	
 ## How to Import API
@@ -31,38 +19,32 @@
     import contributions as ct
    ```
    
-## How to Call Function
+## How to invoke Method
   * Use Below Code
    ```python
     print(ct.getContributionsDaily("USER NAME HERE"))
    ```
    
-## Function for API (This part is out-dated, will be updated soon)
+## Methods
 
   #### `getContributionsDaily("USER NAME HERE")`
-
-  * this provides a json data contains how many contributed in a day with a contributed date.
-      ignoring a no contributed date.
+  * This provides a json containing the number of times a given user contributed to github in a day during the year, ignoring a not contributed date.
   * JSON Example
   
    ```json
     [
       {
-          "date" : "2017-02-27",
-          "count" : "2"
+          "2017-02-27": "2"
       },
       {
-          "date" : "2017-02-28",
-          "count" : "10"
+          "2017-02-28": "10"
       }
     ]
    ```
-   above json data ignored many contributing-date beacause the json is too big to write here.  
-   check out -> [Yunbin-Chang-Daily.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Daily.JSON)
+   check out -> [techbless.daily.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.daily.json)
      
   #### `getContributionsWeekly("USER NAME HERE")`
-  
-  * this provides a json data contains how many contributed during last year and is counted by day of week
+  * This provides a json containing the number of times a given user contributed to github during the year, counted by day of week
   * JSON Example
     
   ```json
@@ -73,7 +55,7 @@
   
   #### `getContributionsMonthly("Yunbin-Chang")`
 
-  * this provides a json data contains how many contributed during last year and is counted by month of year
+  * This provides a json containing the number of times a given user contributed to github in a month during the year.
   * JSON Example
   
   ```json
@@ -111,15 +93,14 @@
   We welcome contributions, but some Rules:
   
    * please keep the master branch working.
-   * Generally, We prefer for you to add new features or fix bugs rather than refactoring, or deleting)
 
 ## How to Keep in Touch
 
-	hw@yunbin.kr
+	yunbin@hansung.ac.kr
 	
 ## Should Notice This
 
-	From Chris Yunbin Chang as developer of this API, saying that This API never guarantee any errorneous, mis-working, damaging server, anything which can ouccur while using this API.
+	From Chris Yunbin Chang as developer of this Library, saying that This Library never guarantee any errorneous, mis-working, damaging server, anything which can ouccur while using this Library.
 
 ## License
 
