@@ -32,14 +32,13 @@
   * JSON Example
   
    ```json
-    [
-      {
-          "2017-02-27": "2"
-      },
-      {
-          "2017-02-28": "10"
-      }
-    ]
+   {
+     "2019-03-03":"2",
+     "2019-03-11":"2",
+     "2019-09-08":"1",
+     ...
+   }
+
    ```
    check out -> [techbless.daily.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.daily.json)
      
@@ -48,9 +47,17 @@
   * JSON Example
     
   ```json
-  { "Sunday" : "50", "Monday" : "25", "Tuesday" : "57", "Wednesday" : "33", "Thursday" : "14", "Friday" : "15", "Saturday" : "18" }
+  {
+    "Sunday":95,
+    "Monday":129,
+    "Tuesday":89,
+    "Wednesday":187,
+    "Thursday":126,
+    "Friday":117,
+    "Saturday":87
+  }
   ```
-  If you want to find out more, check out -> [Yunbin-Chang-Weekly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Weekly.JSON)
+  If you want to find out more, check out -> [techbless.weekly.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.weekly.json)
     
   
   #### `getContributionsMonthly("Yunbin-Chang")`
@@ -59,10 +66,23 @@
   * JSON Example
   
   ```json
-  { "January" : "58", "Febuary" : "102", "March" : "16", "April" : "0", "May" : "0", "June" : "0", "July" : "2","August" : "6","September" : "0","October" : "8","November" : "17","December" : "10" }
+  {
+    "January":"371",
+    "Febuary":"130",
+    "March":"56",
+    "April":"0",
+    "May":"0",
+    "June":"0",
+    "July":"0",
+    "August":"0",
+    "September":"101",
+    "October":"22",
+    "November":"57",
+    "December":"93"
+  }
   ```
     
- If you want to find out more, check out -> [Yunbin-Chang-Monthly.JSON](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/Yunbin-Chang-Monthly.JSON)
+ If you want to find out more, check out -> [techbless.monthly.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.monthly.json)
  
  
 
