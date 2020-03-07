@@ -7,7 +7,7 @@ from contributions import *
 
 ct = Contribution()
 
-print(ct.getContributionsDaily("Yunbin-Chang"))
-print(ct.getContributionsWeekly("Yunbin-Chang"))
-print(ct.getContributionsMonthly("Yunbin-Chang"))
-print(ct.getContributionsRatio("Yunbin-Chang"))
+print(ct.getContributionsDaily("techbless"))
+print(ct.getContributionsWeekly("techbless"))
+print(ct.getContributionsMonthly("techbless"))
+print(ct.getContributionsRatio("techbless"))

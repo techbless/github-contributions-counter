@@ -50,8 +50,7 @@ class Contribution():
     for rect in rects:
       if rect.get('data-count') != "0":
         dic = {
-          "date": rect.get('data-date'),
-          "count": rect.get('data-count')
+          rect.get('data-date'): rect.get('data-count')
         }
         res_list.append(dic)
 
@@ -91,8 +90,7 @@ class Contribution():
     d = 0
     for day_count in week:
       dic = {
-        "day_of_week": self.weekTable[d],
-        "count": day_count
+        self.weekTable[d]: day_count
       }
       res.append(dic)
       d += 1
@@ -136,8 +134,7 @@ class Contribution():
     for month in monthOf:
       if m != 0:
         dic = {
-          "month": monthDict[m],
-          "count": str(month)
+          monthDict[m]: str(month)
         }
         res.append(dic)
       m += 1

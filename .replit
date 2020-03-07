@@ -1,2 +1,2 @@
-language = "bash"
-run = ""
+language = "python3"
+run = "python src/test.py"
