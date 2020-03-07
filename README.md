@@ -85,6 +85,24 @@
  If you want to find out more, check out -> [techbless.monthly.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.monthly.json)
  
  
+  #### `getContributionsRatio("Yunbin-Chang")`
+
+  * This provides a json containing the ratio of contribution types   
+  * `types`: commits, pull_requests, issues, code_reviews
+  * JSON Example
+  
+  ```json
+  {
+    "commits":97,
+    "pull_requests":2,
+    "issues":1,
+    "code_review":0
+  }
+  ```
+    
+ If you want to find out more, check out -> [techbless.ratio.json](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/sample-json/techbless.ratio.json)
+ 
+ 
 
 ## Range of Data
 
@@ -93,19 +111,19 @@
   
 ## How does it works
 
-  This API parse a contributions data from https://github.com/(some-user-name)
+  This Library parses a contributions data from https://github.com/(some-user-name)
 
   Especially from below parts of the page.
 
 ![img/contribution-rect](https://github.com/Yunbin-Chang/Github-Contributions-API/blob/master/img/contribution-rects.PNG)
 
-  each code for above color-filled rectangles is formatted as
+  Each code for above color-filled rectangles is formatted as
 
   ```html
     <rect class="day" width="10" height="10" x="?" y="?" fill="#ebedf0" data-count="<counting>" data-date="yyyy-mm-dd"/>
   ```
 
-  so the API parses from these parts and arrange and decorate with json and respond to request.
+  so The library parses from these parts and arrange and decorate with json and respond to request.
 
 
 ## Contributions
