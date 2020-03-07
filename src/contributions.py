@@ -40,8 +40,9 @@ class Contribution():
     6: "Saturday"
   }
 
+
   def getContributionsDaily(self, uname):  
-    res_list = []
+    obj = {};
     rects = self.getContributionsElement(uname)
 
     if rects == "404":
@@ -49,12 +50,10 @@ class Contribution():
     
     for rect in rects:
       if rect.get('data-count') != "0":
-        dic = {
-          rect.get('data-date'): rect.get('data-count')
-        }
-        res_list.append(dic)
+        date = rect.get('data-date')
+        obj[date] = rect.get('data-count')
 
-    return json.dumps(res_list)
+    return json.dumps(obj)
 
   def getContributionsWeekly(self, uname):
     rects = self.getContributionsElement(uname)
@@ -86,16 +85,14 @@ class Contribution():
       elif dayOfWeek == "Saturday":
         week[6] += count
         
-    res = []
+    obj = {}
     d = 0
     for day_count in week:
-      dic = {
-        self.weekTable[d]: day_count
-      }
-      res.append(dic)
+      week = self.weekTable[d]
+      obj[week] = day_count
       d += 1
     
-    return json.dumps(res)
+    return json.dumps(obj)
 
   def getContributionsMonthly(self, uname):
     rects = self.getContributionsElement(uname)
@@ -114,32 +111,15 @@ class Contribution():
         if month == n:
           monthOf[n] += count
 
-    monthDict = {
-      1: "January",
-      2: "Febuary",
-      3: "March",
-      4: "April",
-      5: "May",
-      6: "June",
-      7: "July",
-      8: "August",
-      9: "September",
-      10: "October",
-      11: "November",
-      12: "December"
-    }
-
-    res = []
+    obj = {}
     m = 0
     for month in monthOf:
       if m != 0:
-        dic = {
-          monthDict[m]: str(month)
-        }
-        res.append(dic)
+        mon = self.monthDict[m]
+        obj[mon] = str(month)
       m += 1
 
-    return json.dumps(res)
+    return json.dumps(obj)
 
   def getContributionsRatio(self, uname):
     try:
